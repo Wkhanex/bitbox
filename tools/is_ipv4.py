@@ -10,7 +10,7 @@ def run(*args) -> str:
         return "False"
 
     for part in parts:
-        if not part.isdigit():
+        if not part.isascii() or not part.isdigit():
             return "False"
         # reject leading zeros
         if len(part) > 1 and part[0] == "0":
