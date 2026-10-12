@@ -3,6 +3,9 @@
 # author: @Solaris-star
 # example: file_size_human "1536" -> "1.5 KB"
 
+from math import isfinite
+
+
 def run(*args) -> str:
     if len(args) != 1:
         return "Error: Expected exactly 1 argument."
@@ -10,6 +13,8 @@ def run(*args) -> str:
         size = float(args[0])
     except ValueError:
         return "Error: Size must be a number."
+    if not isfinite(size):
+        return "Error: Size must be finite."
     if size < 0:
         return "Error: Size must be non-negative."
     units = ["B", "KB", "MB", "GB", "TB", "PB"]
